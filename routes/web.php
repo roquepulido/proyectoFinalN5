@@ -34,6 +34,11 @@ Route::middleware('auth', 'role:empresa')->group(function () {
         return view('admin');
     });
 });
+Route::middleware('auth', 'role:postulante')->group(function () {
+    Route::get('/post', function () {
+        return view('post');
+    });
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
