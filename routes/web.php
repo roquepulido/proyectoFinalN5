@@ -36,7 +36,7 @@ Route::middleware('auth', 'role:empresa')->group(function () {
 });
 Route::middleware('auth', 'role:postulante')->group(function () {
     Route::get('/post', function () {
-        return view('post');
+        return Inertia::render('Post');
     });
 });
 
