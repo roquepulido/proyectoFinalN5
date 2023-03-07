@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { createRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/react";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 const appName =
     window.document.getElementsByTagName("title")[0]?.innerText || "Laravel";
