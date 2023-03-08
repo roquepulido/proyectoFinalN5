@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('vacantes', function (Blueprint $table) {
             $table->id();
+            $table->string("titulo");
+            $table->string("experiencia");
+            $table->text("descripcion");
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId("categoria_id")->constrained("categorias");
+            $table->foreignId("ubicacion_id")->constrained("ubicacions");
+            $table->foreignId("salario_id")->constrained("salarios");
             $table->timestamps();
         });
     }

@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('salarios', function (Blueprint $table) {
+        Schema::create('skills_vacantes', function (Blueprint $table) {
             $table->id();
-            $table->string("valor");
-            $table->timestamps();
+            $table->foreignId("vacante_id")->constrained("vacantes");
+            $table->foreignId("skill_id")->constrained("skills");
         });
     }
 
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('salarios');
+        //
     }
 };
