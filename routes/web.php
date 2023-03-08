@@ -5,6 +5,8 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\SalarioController;
+use App\Http\Controllers\SelectDataController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,5 +49,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/select/salarios', [SelectDataController::class, 'salarios']);
+Route::get('/select/skills', [SelectDataController::class, 'skills']);
+Route::get('/select/categorias', [SelectDataController::class, 'categorias']);
+Route::get('/select/ubicaciones', [SelectDataController::class, 'ubicaciones']);
 
 require __DIR__ . '/auth.php';

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('salarios', function (Blueprint $table) {
             $table->id();
             $table->string("valor");
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 
