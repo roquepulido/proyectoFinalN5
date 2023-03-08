@@ -37,10 +37,11 @@ class RegisteredUserController extends Controller
             'email' => 'required|string|email|max:255|unique:' . User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-
+        $request->aplicante ? $rol = "postulante" : $rol = "empresa";
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'rol'=>$rol,
             'password' => Hash::make($request->password),
         ]);
         $request->aplicante ? $user->assignRole("postulante") : $user->assignRole("empresa");
