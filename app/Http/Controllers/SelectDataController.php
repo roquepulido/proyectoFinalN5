@@ -27,26 +27,4 @@ class SelectDataController extends Controller
 
         return Inertia::render('empresa/CrearVacante', ['skills' => $skills_new, 'salarios' => $salarios, 'categorias' => $categorias, 'ubicaciones' => $ubicaciones,]);
     }
-
-    public function create(Request $request)
-    {
-
-
-        Vacantes::create(
-            [
-                "titulo" => $request->titulo,
-                "descripcion" => $request->descripcion,
-                "experiencia" => $request->experiencia,
-                "skills" => json_encode($request->skills),
-                "user_id" => $request->user_id,
-                "categoria_id" => $request->categoria,
-                "ubicacion_id" => $request->ubicacion,
-                "salario_id" => $request->salario
-
-            ]
-        );
-
-        $status = "Vacante creada";
-        return Redirect::route('vacantes.empresa')->with(['message' => $status]);
-    }
 }

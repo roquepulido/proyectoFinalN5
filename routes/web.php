@@ -39,8 +39,11 @@ Route::middleware('auth', 'role:empresa')->group(function () {
         return view('admin');
     });
     Route::get('/crearVacante', [SelectDataController::class, 'index'])->name("vacante.crear");
-    Route::post('/crearVacante', [SelectDataController::class, 'create'])->name("vacante.crear");
+    Route::post('/crearVacante', [VacantesController::class, 'create'])->name("vacante.crear");
     Route::get('/Vacantes', [VacantesController::class, 'index'])->name("vacantes.empresa");
+    Route::get('/Vacantes/delete/{id}', [VacantesController::class, 'delete'])->name("Vacantes.delete");
+    Route::get('/Vacantes/update/{id}', [VacantesController::class, 'get_vacante'])->name("Vacantes.update.get");
+    Route::post('/Vacantes/update/', [VacantesController::class, 'update'])->name("vacante.update");
 });
 Route::middleware('auth', 'role:postulante')->group(function () {
     Route::get('/post', function () {
