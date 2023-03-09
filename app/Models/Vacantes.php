@@ -13,6 +13,13 @@ class Vacantes extends Model
         'titulo',
         'experiencia',
         'descripcion',
+        'skills',
+        "user_id",
+        'categoria_id',
+        'ubicacion_id',
+        'salario_id'
+
+
     ];
     public function categoria(): BelongsTo
     {

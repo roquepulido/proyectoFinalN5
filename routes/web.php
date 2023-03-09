@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SalarioController;
 use App\Http\Controllers\SelectDataController;
+use App\Http\Controllers\VacantesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,9 @@ Route::middleware('auth', 'role:empresa')->group(function () {
     Route::get('/main', function () {
         return view('admin');
     });
+    Route::get('/crearVacante', [SelectDataController::class, 'index'])->name("vacante.crear");
+    Route::post('/crearVacante', [SelectDataController::class, 'create'])->name("vacante.crear");
+    Route::get('/Vacantes', [VacantesController::class, 'index'])->name("vacantes.empresa");
 });
 Route::middleware('auth', 'role:postulante')->group(function () {
     Route::get('/post', function () {

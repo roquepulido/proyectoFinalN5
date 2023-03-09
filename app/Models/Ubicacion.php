@@ -10,7 +10,7 @@ class Ubicacion extends Model
     use HasFactory;
     public $timestamps = false;
     protected $fillable = [
-        'lugar',
+        'name',
 
     ];
 }

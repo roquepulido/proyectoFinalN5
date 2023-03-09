@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId("categoria_id")->constrained("categorias");
             $table->foreignId("ubicacion_id")->constrained("ubicacions");
             $table->foreignId("salario_id")->constrained("salarios");
+            $table->json("skills")->nullable();
             $table->timestamps();
         });
     }

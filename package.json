@@ -23,6 +23,7 @@
         "bootstrap": "^5.2.3",
         "jquery": "^3.6.3",
         "react-bootstrap": "^2.7.2",
+        "react-select": "^5.7.0",
         "sweetalert2": "^11.7.3"
     }
 }
