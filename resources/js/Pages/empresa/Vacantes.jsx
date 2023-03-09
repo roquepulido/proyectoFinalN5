@@ -29,7 +29,13 @@ function Vacantes(props) {
 
                 <div className="p-12 flex flex-wrap justify-center gap-5">
                     {vacantes.map((vacante, id) => {
-                        return <VacanteCard key={id} data={vacante} />;
+                        return (
+                            <VacanteCard
+                                key={id}
+                                data={vacante}
+                                canEdit={true}
+                            />
+                        );
                     })}
                 </div>
             </AuthenticatedLayout>

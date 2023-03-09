@@ -31,6 +31,7 @@ Route::get('/', function () {
     ]);
 });
 Route::get('/Vacante/{id}', [VacantesViewController::class, 'get_vacante'])->name("get.vacante");
+Route::post('/Vacante', [VacantesViewController::class, 'aplicar'])->name("aplicar");
 
 Route::get('/dashboard', function () {
 
