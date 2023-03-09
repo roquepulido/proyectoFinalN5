@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SalarioController;
 use App\Http\Controllers\SelectDataController;
 use App\Http\Controllers\VacantesController;
+use App\Http\Controllers\VacantesViewController;
+use App\Models\Vacantes;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +27,10 @@ Route::get('/', function () {
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
+        'vacantes' => Vacantes::all(),
     ]);
 });
+Route::get('/Vacante/{id}', [VacantesViewController::class, 'get_vacante'])->name("get.vacante");
 
 Route::get('/dashboard', function () {
 

@@ -51,10 +51,15 @@ class VacantesController extends Controller
     }
     public function delete($id)
     {
+        $user_id = Auth::id();
         $vacante = Vacantes::find($id);
-        $vacante->delete();
-        $status = "Vacante Borrada";
-        return "ok";
+        if ($vacante->user_id == $user_id) {
+            $vacante->delete();
+            return "ok";
+        } else {
+            $status = "No tienes permiso para borrar esta Vacante";
+            return Redirect::route('vacantes.empresa')->with(['message' => $status]);
+        }
     }
     public function get_vacante($id)
     {
@@ -73,18 +78,27 @@ class VacantesController extends Controller
     {
 
         $vacante = Vacantes::find($request->id);
-        $vacante->update([
-            "titulo" => $request->titulo,
-            "descripcion" => $request->descripcion,
-            "experiencia" => $request->experiencia,
-            "skills" => json_encode($request->skills),
-            "user_id" => $request->user_id,
-            "categoria_id" => $request->categoria,
-            "ubicacion_id" => $request->ubicacion,
-            "salario_id" => $request->salario
+        $user_id = Auth::id();
+        if ($vacante->user_id == $user_id) {
 
-        ]);
-        $status = "Vacante Actualizada";
+
+            $vacante->update([
+                "titulo" => $request->titulo,
+                "descripcion" => $request->descripcion,
+                "experiencia" => $request->experiencia,
+                "skills" => json_encode($request->skills),
+                "user_id" => $request->user_id,
+                "categoria_id" => $request->categoria,
+                "ubicacion_id" => $request->ubicacion,
+                "salario_id" => $request->salario
+
+            ]);
+            $status = "Vacante Actualizada";
+        } else {
+            $status = "No tienes permiso para borrar esta Vacante";
+        }
+
+
         return Redirect::route('vacantes.empresa')->with(['message' => $status]);
     }
 }
