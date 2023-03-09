@@ -4,7 +4,7 @@ function Vacantes(props) {
     return (
         <>
             <div>Vacantes</div>
-            {props.status}
+            <pre>{JSON.stringify(props, undefined, 2)}</pre>
         </>
     );
 }

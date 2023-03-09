@@ -30,7 +30,7 @@ class SelectDataController extends Controller
 
     public function create(Request $request)
     {
-        dd($request);
+
 
         Vacantes::create(
             [
@@ -47,14 +47,6 @@ class SelectDataController extends Controller
         );
 
         $status = "Vacante creada";
-        return Redirect::route('vacantes.empresa')->with(['status' => $status]);
-    }
-    public function share(Request $request)
-    {
-        return array_merge(parent::share($request), [
-            'flash' => [
-                'message' => fn () => $request->session()->get('message')
-            ],
-        ]);
+        return Redirect::route('vacantes.empresa')->with(['message' => $status]);
     }
 }
