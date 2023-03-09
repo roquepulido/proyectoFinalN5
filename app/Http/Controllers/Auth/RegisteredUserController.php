@@ -38,22 +38,14 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'empresaRol' => 'required',
         ]);
-
+        $request->aplicante ? $rol = "postulante" : $rol = "empresa";
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'rol'=>$rol,
             'password' => Hash::make($request->password),
         ]);
-
-        switch ($request->empresaRol) {
-            case "empresa":
-                $user->assignRole("empresa");
-                break;
-            case "postulante":
-                $user->assignRole("postulante");
-                break;
-        }
-
+        $request->aplicante ? $user->assignRole("postulante") : $user->assignRole("empresa");
         event(new Registered($user));
 
         Auth::login($user);

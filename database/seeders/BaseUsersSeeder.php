@@ -16,11 +16,13 @@ class BaseUsersSeeder extends Seeder
         $user = User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
+            'rol' => 'empresa'
         ]);
         $user->assignRole("empresa");
         $user = User::factory()->create([
             'name' => 'Test User',
             'email' => 'test2@example.com',
+            'rol' => 'postulante'
         ]);
         $user->assignRole("postulante");
     }
